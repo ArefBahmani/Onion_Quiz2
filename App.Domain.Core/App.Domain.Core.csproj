@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="CardToCard\BaseData\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Colors.Net" Version="1.1.0" />
+  </ItemGroup>
+
+</Project>
