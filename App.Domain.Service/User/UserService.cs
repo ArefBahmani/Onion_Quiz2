@@ -18,11 +18,11 @@ namespace App.Domain.Service.User
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
-        private readonly ICardRepository _cardRepository;
-        public UserService()
+       
+        public UserService(IUserRepository userRepository)
         {
-            _userRepository = new UserRepository();
-            _cardRepository = new CardRepository();
+            _userRepository = userRepository;
+            
         }
 
 
@@ -41,6 +41,13 @@ namespace App.Domain.Service.User
             DateTime expirationTime = DateTime.Now.AddMinutes(5);
             _userRepository.GenerateAndSaveVerificationCode(userId, fullName, verificationCode, expirationTime);
             return $"Code Send";
+        }
+        public string CodeRandom()
+        {
+            var random = new Random();
+            int verificationCode = random.Next(10000, 99999);
+            _userRepository.InsertCode(verificationCode);
+            return verificationCode.ToString();
         }
 
         public bool ValidateVerificationCode(int userId, string fullName, int verificationCode)

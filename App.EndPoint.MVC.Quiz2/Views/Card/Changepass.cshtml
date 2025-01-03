@@ -1,0 +1,20 @@
+﻿
+<h2>Change Password</h2>
+<hr />
+
+<form method="post" asp-action="ChangePass" asp-controller="Card">
+    <div class="form-group" style="color:darkgoldenrod">
+        <label for="oldPass" style="background-color:mintcream">Old Password</label>
+        <input type="password" class="form-control" id="oldPass" name="oldPass" placeholder="enter oldpassword" required />
+    </div>
+    <br />
+    <br />
+
+    <div class="form-group"style="color:green">
+        <label for="newPass" style="background-color:mintcream">New Password</label>
+        <input type="password" class="form-control" id="newPass" name="newPass" placeholder="enter newpassword" required />
+    </div>
+     <br />
+    <br />
+    <button type="submit" class="btn btn-primary">Set New Password</button>
+</form>

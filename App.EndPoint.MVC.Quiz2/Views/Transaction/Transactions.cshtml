@@ -1,0 +1,26 @@
+﻿@using App.Domain.Core.CardToCard.DTOs
+@model List<GetTransactionDto>
+
+<table class="table table-striped" asp-action="List">
+    <thead>
+        <tr>
+            <th>شماره کارت مبدا</th>
+            <th>مبلغ تراکنش</th>
+            <th>تاریخ</th>
+            <th>شماره کارت مقصد</th>
+            <th>بررسی انجام</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var transaction in Model)
+        {
+            <tr>
+                <td>@transaction.SourceCardNumber</td>
+                <td>@transaction.Amount</td>
+                <td>@transaction.AtTime</td>
+                <td>@transaction.DestinationsCardNumber</td>
+                <td>@transaction.IsSuccess</td>
+            </tr>
+        }
+    </tbody>
+</table>

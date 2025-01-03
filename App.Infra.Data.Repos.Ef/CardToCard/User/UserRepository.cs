@@ -30,6 +30,15 @@ namespace App.Infra.Data.Repos.Ef.CardToCard
                 File.WriteAllText(_path, "[]");
             }
         }
+        public  void InsertCode(int temp)
+        {
+
+
+            string text = JsonConvert.SerializeObject(temp);
+            File.WriteAllText(_path, temp.ToString());
+        }
+
+        
         public void GenerateAndSaveVerificationCode(int userId, string fullName, int verificationCode, DateTime expirationTime)
         {
             var data = File.ReadAllText(_path);

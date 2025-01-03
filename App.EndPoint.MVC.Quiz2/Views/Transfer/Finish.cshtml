@@ -1,0 +1,27 @@
+﻿@using App.Domain.Core.CardToCard.Card.Entity
+@model Card
+@{
+    ViewData["Title"] = "Login";
+}
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-@TempData["AlertType"] alert-dismissible fade show" role="alert">
+        @TempData["Message"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<div class="container">
+   
+
+    <form method="post" asp-action="CardToCard" asp-controller="Transfer">
+        <div class="mb-3">
+
+            <label for="code" class="form-label">Temperary code</label>
+            <input type="text" class="form-control" name="code" id="code" placeholder="Enter The Code" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Finish</button>
+    </form>
+</div>

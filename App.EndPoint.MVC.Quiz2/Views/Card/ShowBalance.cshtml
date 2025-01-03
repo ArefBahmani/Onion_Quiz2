@@ -1,0 +1,14 @@
+﻿@using App.Domain.Core.CardToCard.Card.Entity
+@model Card
+
+@if (Model.Balance != null)
+{
+    <div>
+        <h2>موجودی کارت:</h2>
+        <p>@Model.Balance تومان</p>
+    </div>
+}
+else
+{
+    <p>خطا در نمایش موجودی کارت.</p>
+}

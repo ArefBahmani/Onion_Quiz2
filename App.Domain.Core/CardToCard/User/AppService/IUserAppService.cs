@@ -8,5 +8,6 @@ namespace App.Domain.Core.CardToCard.User.AppService
 {
     public interface IUserAppService
     {
+       
     }
 }

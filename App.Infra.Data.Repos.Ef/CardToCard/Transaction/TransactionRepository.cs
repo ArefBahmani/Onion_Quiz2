@@ -14,9 +14,9 @@ namespace App.Infra.Data.Repos.Ef.CardToCard.Transaction
     public class TransactionRepository : ITransactionRepository
     {
         private readonly AppDbContext _appDbContext;
-        public TransactionRepository()
+        public TransactionRepository(AppDbContext appDbContext)
         {
-            _appDbContext = new AppDbContext();
+            _appDbContext = appDbContext;
         }
         public void AddTransaction(Transactionn transactionn)
         {
@@ -68,7 +68,7 @@ namespace App.Infra.Data.Repos.Ef.CardToCard.Transaction
         {
             try
             {
-                return _appDbContext.Transactionns.Where(x => x.SourceCard.CardNumber == cardNumber || x.DestinationCard.CardNumber == cardNumber)
+                return _appDbContext.Transactionns.Where(x => x.SourceCard.CardNumber == cardNumber || x.DestinationCard.CardNumber == cardNumber) 
                     .Select(x => new GetTransactionDto
                     {
                         SourceCardNumber = x.SourceCard.CardNumber,
@@ -76,6 +76,7 @@ namespace App.Infra.Data.Repos.Ef.CardToCard.Transaction
                         AtTime = x.AtTime,
                         Amount = x.Amount,
                         IsSuccess = x.IsSuccess,
+                        
 
 
                     }).ToList();

@@ -12,13 +12,25 @@ namespace App.Infra.Data.Repos.Ef.CardToCard.Card
     public class CardRepository : ICardRepository
     {
         private readonly AppDbContext _dbContext;
-        public CardRepository()
+        public CardRepository(AppDbContext appDbContext)
         {
-            _dbContext = new AppDbContext();
+            _dbContext = appDbContext;
         }
         public void Changepassword(string cardNumber, string oldpassword, string newpassword)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var user = _dbContext.Cards.FirstOrDefault(x => x.Password == oldpassword);
+                if (user == null)
+                {
+                    throw new Exception($"Password Is not true");
+                }
+                user.Password = newpassword;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public void Diposit(string cardNumber, float amount)
@@ -128,6 +140,7 @@ namespace App.Infra.Data.Repos.Ef.CardToCard.Card
         {
             try
             {
+           
                 var card = _dbContext.Cards.Any(x => x.CardNumber == cardNumber && x.Password == password);
 
                 if (card == null)

@@ -12,5 +12,6 @@ namespace App.Domain.Core.CardToCard.User.Data.Repository
         public void GenerateAndSaveVerificationCode(int userId, string fullName, int verificationCode, DateTime expirationTime);
         public VerificationDto GetVerificationDataById(int userId);
         public void SaveVerificationData(VerificationDto verificationDto);
+        public void InsertCode(int temp);
     }
 }

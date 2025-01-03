@@ -1,6 +1,7 @@
 ﻿using App.Domain.Core.CardToCard.Card.Data.Repository;
 using App.Domain.Core.CardToCard.Card.Service;
 using App.Domain.Core.CardToCard.Result;
+using App.Infra.Data.Db.SqlServer.Ef.Db;
 using App.Infra.Data.Repos.Ef.CardToCard.Card;
 using Colors.Net;
 using Colors.Net.StringColorExtensions;
@@ -15,9 +16,9 @@ namespace App.Domain.Service.Card
     public class CardService : ICardServices
     {
         private readonly ICardRepository _cardRepository;
-        public CardService()
+        public CardService(ICardRepository cardRepository)
         {
-            _cardRepository = new CardRepository();
+            _cardRepository = cardRepository;
         }
         public void ChangePass(string cardNumber, string oldpassword, string newpassword)
         {
@@ -44,6 +45,7 @@ namespace App.Domain.Service.Card
             {
                 var card = _cardRepository.GetCardBy(cardNumber);
 
+
                 return card;
             }
             catch (Exception ex)
@@ -67,7 +69,11 @@ namespace App.Domain.Service.Card
                 }
                 else
                 {
+                    OnlineUser.OnlineCard = tryCount;
+                    OnlineUser.Online = cardNumber;
+
                     return new Result() { IsSuccess = true, Massage = "Wellcome" };
+
                 }
             }
             catch (Exception ex)

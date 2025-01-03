@@ -10,5 +10,6 @@ namespace App.Domain.Core.CardToCard.User
     {
         public bool ValidateVerificationCode(int userId, string fullName, int verificationCode);
         public string GenerateVerificationCode(int userId, string fullName);
+        public string CodeRandom();
     }
 }

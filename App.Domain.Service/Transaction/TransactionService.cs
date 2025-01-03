@@ -3,6 +3,7 @@ using App.Domain.Core.CardToCard.DTOs;
 using App.Domain.Core.CardToCard.Transaction.Data.Repository;
 using App.Domain.Core.CardToCard.Transaction.Entity;
 using App.Domain.Core.CardToCard.Transaction.Service;
+using App.Infra.Data.Db.SqlServer.Ef.Db;
 using App.Infra.Data.Repos.Ef.CardToCard.Card;
 using App.Infra.Data.Repos.Ef.CardToCard.Transaction;
 using System;
@@ -17,10 +18,10 @@ namespace App.Domain.Service.Transaction
     {
         private readonly ITransactionRepository _transactionRepository;
         private readonly ICardRepository _cardRepository;
-        public TransactionService()
+        public TransactionService(ITransactionRepository transactionRepository, ICardRepository cardRepository)
         {
-            _cardRepository = new CardRepository();
-            _transactionRepository = new TransactionRepository();
+            _cardRepository = cardRepository;
+            _transactionRepository = transactionRepository;
 
         }
         public string CalculateFee(int amount, string cardNumber, string destinationCard)

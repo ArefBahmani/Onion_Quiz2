@@ -22,7 +22,7 @@ namespace App.Domain.Core.CardToCard.Card.Entity
         public int FalsePassword { get; set; } = 0;
         public List<Transactionn> TransactionnsAsSource { get; set; }
         public List<Transactionn> TransactionnsAsDestination { get; set; }
-        public CardToCard.User.Entity.User User { get; set; }
+        public CardToCard.User.Entity.User? User { get; set; }
         public int UserId { get; set; }
     }
 }

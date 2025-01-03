@@ -8,5 +8,6 @@ namespace App.Domain.Core.CardToCard.Transaction.AppService
 {
     public interface ITransactionAppService
     {
+        void Transfer(string sourceCardNumber);
     }
 }
